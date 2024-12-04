@@ -12,7 +12,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>calculatorApp</artifactId>
-	<version>1.0.0</version>
+	<version>1.0</version>
 	<name>calculatorApp</name>
 	<description>Maven Project with Spring Boot and Spring MVC</description>
 	<url/>
@@ -53,9 +53,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

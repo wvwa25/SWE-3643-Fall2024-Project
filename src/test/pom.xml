@@ -13,7 +13,7 @@
 	<artifactId>calculatorAppTests</artifactId>
 	<version>1.0.0</version>
 	<name>calculatorAppTests</name>
-	<description>JUnit Tests for Calculator Logic</description>
+	<description>JUnit Tests for main.Calculator Logic</description>
 
 	<dependencies>
 		<dependency>

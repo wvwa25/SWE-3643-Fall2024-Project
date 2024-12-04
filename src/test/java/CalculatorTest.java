@@ -1,3 +1,4 @@
+import main.Calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -83,7 +84,7 @@ public class CalculatorTest {
         List<Double[]> doubleArrList = Arrays.asList(pair1, pair2);
 
         // Act
-        // double result = Calculator.computeLinearReg(doubleArrList);
+        // double result = main.Calculator.computeLinearReg(doubleArrList);
 
         // Assert
         // Assertions.assertEquals(result, expected, 8);
