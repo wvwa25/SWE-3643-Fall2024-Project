@@ -15,9 +15,7 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
-
             System.out.println("Hey, hey, hey! Let's get this party started!");
-
         };
     }
 

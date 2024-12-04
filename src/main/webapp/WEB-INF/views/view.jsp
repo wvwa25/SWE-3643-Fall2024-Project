@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Howdy partner!</title>
 </head>
 <body>
 

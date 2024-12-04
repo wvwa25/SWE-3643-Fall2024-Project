@@ -20,7 +20,9 @@
 ## Architecture
 
 The organization of my project directory differs slightly from the example format so that I may follow the official [Standard Directory Layout]((https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)) guidelines given by the Apache Maven Project.
-In my experience, organizing my project by this standard format prevents Maven build issues.
+In my experience, organizing my project by this format prevented Maven build issues.
+
+
 
 ## Environment
 
@@ -71,6 +73,11 @@ Unit tests may be executed with the Maven Wrapper in the project root directory.
 
 -----
 
+100% line and branch coverage was achieved for the Calculator class.
+
+![Coverage](assets/Coverage.png)
+
+
 ## Executing End-To-End Tests
 
 -----
@@ -78,3 +85,5 @@ Unit tests may be executed with the Maven Wrapper in the project root directory.
 ## Final Video Presentation
 
 -----
+
+The presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035851412).
