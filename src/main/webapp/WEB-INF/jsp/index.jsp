@@ -2,9 +2,8 @@
 
 <html>
 <head>
-    <title>Howdy partner!</title>
+<title> Howdy partner!</title>
 </head>
 <body>
-
 </body>
 </html>

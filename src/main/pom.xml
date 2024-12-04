@@ -7,59 +7,12 @@
 	<parent>
 		<groupId>com.example</groupId>
 		<artifactId>calculatorApp</artifactId>
-		<version>1.0.0</version>
+		<version>1.0</version>
 	</parent>
 
 	<artifactId>calculatorAppWeb</artifactId>
-	<version>1.0.0</version>
+	<version>1.0</version>
 	<name>calculatorAppWeb</name>
-	<description>main.Calculator Web App main.controller.MainController and View</description>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<skip>false</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<dependencies>
-		<!-- Spring Web -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>6.1.13</version>
-		</dependency>
-
-		<!-- JSTL for JSP support -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Apache Tomcat Embed for JSP support -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<version>9.0.41</version>
-		</dependency>
-
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+	<description>Calculator Application, Controller, and View</description>
 
 </project>

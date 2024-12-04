@@ -10,6 +10,6 @@ public class MainController {
 	@GetMapping("/")
 	public String displayMainPage(Model model) {
 		model.addAttribute("message", "Hello, welcome to the JSP web application!");
-		return "view"; // Maps to view.jsp in /WEB-INF/views/
+		return "index"; // Maps to /WEB-INF/jsp/index.jsp
 	}
 }
