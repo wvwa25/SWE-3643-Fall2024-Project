@@ -1,10 +1,14 @@
+package test;
+
 import main.Calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.List;
 
+@SpringBootTest(classes = Calculator.class)
 public class CalculatorTest {
 
     @Test
