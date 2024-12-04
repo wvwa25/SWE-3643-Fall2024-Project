@@ -86,4 +86,4 @@ Unit tests may be executed with the Maven Wrapper in the project root directory.
 
 -----
 
-The presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697)).
+The presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
