@@ -1,6 +1,6 @@
 package test;
 
-import main.Calculator;
+import com.example.calculatorApp.Calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -234,7 +234,7 @@ public class CalculatorTest {
         String expected = "y = 61.272x + -39.062";
 
         // Act
-        String result = main.Calculator.computeLinearReg(doubleArrList);
+        String result = Calculator.computeLinearReg(doubleArrList);
 
         // Assert
         Assertions.assertEquals(result, expected);
@@ -320,7 +320,7 @@ public class CalculatorTest {
         double expected = 54.990850423296244;
 
         // Act
-        double result = main.Calculator.predictYValue(doubleList);
+        double result = Calculator.predictYValue(doubleList);
 
         // Assert
         Assertions.assertEquals(result, expected, 8);

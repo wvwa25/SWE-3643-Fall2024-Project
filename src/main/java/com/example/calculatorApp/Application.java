@@ -1,4 +1,4 @@
-package main;
+package com.example.calculatorApp;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

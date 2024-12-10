@@ -1,4 +1,4 @@
-package main.controllers;
+package com.example.calculatorApp.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +11,6 @@ public class MainController {
 	@GetMapping("/")
 	public String displayIndex(@RequestParam(name="name", required=false,
 			defaultValue="World") String name, Model model) {
-		return "index"; //
+		return "index"; // maps to webapp/WEB-INF/templates/index.html
 	}
 }
