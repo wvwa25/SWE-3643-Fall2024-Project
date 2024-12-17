@@ -1,6 +1,7 @@
 package test;
 
-import com.example.calculatorApp.Calculator;
+import com.example.calculatorApp.logic.Calculator;
+import com.example.calculatorApp.logic.Result;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,10 +21,10 @@ public class CalculatorTest {
         double expected = 1.5811388300841;
 
         // Act
-        double result = Calculator.computeSampleStD(doubleList);
+        Result result = Calculator.computeSampleStD(doubleList);
 
         // Assert
-        Assertions.assertEquals(result, expected, 8);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
 
     }
 
@@ -33,12 +34,13 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = Arrays.asList(0.0, 0.0, 0.0);
+        double expected = 0.0;
 
         // Act
-        double result = Calculator.computeSampleStD(samples);
+        Result result = Calculator.computeSampleStD(samples);
 
         // Assert
-        Assertions.assertEquals(0.0, result, 0.0001);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
     }
 
     @Test
@@ -47,17 +49,27 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = List.of();
+        String error = "List of numbers cannot be empty.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeSampleStD(samples));
+        // Act
+        Result result = Calculator.computeSampleStD(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
     void computeSampleStD_NullList() {
         // preq-UNIT-TEST-2
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeSampleStD(null));
+        // Arrange
+        String error = "List of numbers cannot be empty.";
+
+        // Act
+        Result result = Calculator.computeSampleStD(null);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -69,10 +81,10 @@ public class CalculatorTest {
         double expected = 1.4142135623731;
 
         // Act
-        double result = Calculator.computePopulationStD(doubleList);
+        Result result = Calculator.computePopulationStD(doubleList);
 
         // Assert
-        Assertions.assertEquals(result, expected, 8);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
 
     }
 
@@ -82,12 +94,13 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = Arrays.asList(0.0, 0.0, 0.0);
+        double expected = 0.0;
 
         // Act
-        double result = Calculator.computePopulationStD(samples);
+        Result result = Calculator.computePopulationStD(samples);
 
         // Assert
-        Assertions.assertEquals(0.0, result, 0.0001);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
     }
 
     @Test
@@ -96,17 +109,27 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = List.of();
+        String error = "List of numbers cannot be empty.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computePopulationStD(samples));
+        // Act
+        Result result = Calculator.computePopulationStD(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
     void computePopulationStD_NullList() {
         // preq-UNIT-TEST-3
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computePopulationStD(null));
+        // Arrange
+        String error = "List of numbers cannot be empty.";
+
+        // Act
+        Result result = Calculator.computePopulationStD(null);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -115,9 +138,13 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = List.of(5.0);
+        String error = "List of numbers must be at least 2.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computePopulationStD(samples));
+        // Act
+        Result result = Calculator.computePopulationStD(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -129,10 +156,10 @@ public class CalculatorTest {
         double expected = 7;
 
         // Act
-        double result = Calculator.computeMean(doubleList);
+        Result result = Calculator.computeMean(doubleList);
 
         // Assert
-        Assertions.assertEquals(result, expected, 8);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
 
     }
 
@@ -142,17 +169,27 @@ public class CalculatorTest {
 
         // Arrange
         List<Double> samples = List.of();
+        String error = "List of numbers cannot be empty.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeMean(samples));
+        // Act
+        Result result = Calculator.computeMean(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
     void computeMean_NullList() {
         //preq-UNIT-TEST-4
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeMean(null));
+        // Arrange
+        String error = "List of numbers cannot be empty.";
+
+        // Act
+        Result result = Calculator.computeMean(null);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -163,14 +200,14 @@ public class CalculatorTest {
         double value = 11.5;
         double mean = 7;
         double stdDev = 1.5811388300841898;
-        List<Double> doubleList = Arrays.asList(value, mean, stdDev);
+        List<Double> samples = Arrays.asList(value, mean, stdDev);
         double expected = 2.846049894151541;
 
         // Act
-        double result = Calculator.computeZScore(doubleList);
+        Result result = Calculator.computeZScore(samples);
 
         // Assert
-        Assertions.assertEquals(result, expected, 8);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
 
     }
 
@@ -179,10 +216,16 @@ public class CalculatorTest {
         // preq-UNIT-TEST-5
 
         // Arrange
-        List<Double> params = Arrays.asList(10., 2.0);
+        double value = 11.5;
+        double mean = 7;
+        List<Double> samples = Arrays.asList(value, mean);
+        String error = "Input must contain exactly three numeric values separated by commas.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeZScore(params));
+        // Act
+        Result result = Calculator.computeZScore(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -190,13 +233,17 @@ public class CalculatorTest {
         // preq-UNIT-TEST-5
 
         // Arrange
-        List<Double> params = Arrays.asList(10.0, 0.0, 2.0);
+        double value = 10.0;
+        double mean = 0.0;
+        double stdDev = 2.0;
+        List<Double> samples = Arrays.asList(value, mean, stdDev);
+        double expected = 5.0;
 
         // Act
-        double result = Calculator.computeZScore(params);
+        Result result = Calculator.computeZScore(samples);
 
         // Assert
-        Assertions.assertEquals(5.0, result, 0.0001);
+        Assertions.assertEquals(expected, Double.parseDouble(result.getResult()), 0.00001);
     }
 
     @Test
@@ -204,10 +251,17 @@ public class CalculatorTest {
         // preq-UNIT-TEST-5
 
         // Arrange
-        List<Double> params = Arrays.asList(10.0, 2.0, 0.0);
+        double value = 10.0;
+        double mean = 2.0;
+        double stdDev = 0.0;
+        List<Double> samples = Arrays.asList(value, mean, stdDev);
+        String error = "Standard deviation cannot be zero.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeZScore(params));
+        // Act
+        Result result = Calculator.computeZScore(samples);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -230,14 +284,14 @@ public class CalculatorTest {
         Double[] pair13 = {1.78,69.92};
         Double[] pair14 = {1.8,72.19};
         Double[] pair15 = {1.83,74.46};
-        List<Double[]> doubleArrList = Arrays.asList(pair1, pair2, pair3, pair4, pair5, pair6, pair7, pair8, pair9, pair10, pair11, pair12, pair13, pair14, pair15);
-        String expected = "y = 61.272x + -39.062";
+        List<Double[]> pairs = Arrays.asList(pair1, pair2, pair3, pair4, pair5, pair6, pair7, pair8, pair9, pair10, pair11, pair12, pair13, pair14, pair15);
+        String expected = "y = 61.27219x + -39.06196";
 
         // Act
-        String result = Calculator.computeLinearReg(doubleArrList);
+        Result result = Calculator.computeLinearReg(pairs);
 
         // Assert
-        Assertions.assertEquals(result, expected);
+        Assertions.assertEquals(expected, result.getResult());
 
     }
 
@@ -247,17 +301,45 @@ public class CalculatorTest {
 
         // Arrange
         List<Double[]> pairs = List.of();
+        String error = "List of numbers cannot be empty.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeLinearReg(pairs));
+        // Act
+        Result result = Calculator.computeLinearReg(pairs);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
     void computeLinearReg_NullList() {
         // preq-UNIT-TEST-6
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeLinearReg(null));
+        // Arrange
+        String error = "List of numbers cannot be empty.";
+
+        // Act
+        Result result = Calculator.computeLinearReg(null);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
+    }
+
+    @Test
+    void computeLinearReg_MissingParameters() {
+        // preq-UNIT-TEST-6
+
+        // Arrange
+        List<Double[]> pairs = Arrays.asList(
+                new Double[]{1.0, 2.0},
+                new Double[]{1.0}
+        );
+        String error = "Each line must contain two values separated by commas.";
+
+        // Act
+        Result result = Calculator.computeLinearReg(pairs);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -270,9 +352,13 @@ public class CalculatorTest {
                 new Double[]{1.0, 4.0},
                 new Double[]{1.0, 6.0}
         );
+        String error = "All x values are the same. Cannot compute linear regression.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeLinearReg(pairs));
+        // Act
+        Result result = Calculator.computeLinearReg(pairs);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -285,12 +371,13 @@ public class CalculatorTest {
                 new Double[]{2.0, 2.0},
                 new Double[]{3.0, 2.0}
         );
+        String expected = "y = 0.00000x + 2.00000";
 
         // Act
-        String result = Calculator.computeLinearReg(pairs);
+        Result result = Calculator.computeLinearReg(pairs);
 
         // Assert
-        Assertions.assertEquals("y = 0.000x + 2.000", result);
+        Assertions.assertEquals(expected, result.getResult());
     }
 
     @Test
@@ -303,9 +390,13 @@ public class CalculatorTest {
                 new Double[]{0.0, 0.0},
                 new Double[]{0.0, 0.0}
         );
+        String error = "Input list cannot contain only (0, 0) pairs.";
 
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.computeLinearReg(pairs));
+        // Act
+        Result result = Calculator.computeLinearReg(pairs);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
     }
 
     @Test
@@ -316,14 +407,14 @@ public class CalculatorTest {
         double x = 1.535;
         double m = 61.272186542107434;
         double b = -39.061955918838656;
-        List<Double> doubleList = Arrays.asList(x, m, b);
-        double expected = 54.990850423296244;
+        List<Double> samples = Arrays.asList(x, m, b);
+        String expected = String.format("y = %.5f", 54.990850423296244);
 
         // Act
-        double result = Calculator.predictYValue(doubleList);
+        Result result = Calculator.predictYValue(samples);
 
         // Assert
-        Assertions.assertEquals(result, expected, 8);
+        Assertions.assertEquals(expected, result.getResult());
 
     }
 
@@ -332,10 +423,16 @@ public class CalculatorTest {
         // preq-UNIT-TEST-7
 
         // Arrange
-        List<Double> params = Arrays.asList(2.0, 3.0);
+        double x = 2.0;
+        double m = 3.0;
+        List<Double> samples = Arrays.asList(x, m);
+        String error = "Input must contain exactly three numeric values separated by commas.";
+
+        // Act
+        Result result = Calculator.predictYValue(samples);
 
         // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.predictYValue(params));
+        Assertions.assertEquals(error, result.getError());
     }
 
 }

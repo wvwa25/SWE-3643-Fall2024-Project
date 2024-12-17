@@ -1,4 +1,4 @@
-package com.example.calculatorApp.web.controller;
+package com.example.calculatorApp.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

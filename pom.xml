@@ -14,7 +14,6 @@
 	<version>1.0</version>
 	<name>calculatorApp</name>
 	<description>Maven Project with Spring Boot and Spring MVC</description>
-	<packaging>war</packaging>
 	<url/>
 
 	<licenses>
@@ -72,10 +71,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
@@ -85,19 +80,6 @@
 				<version>2.22.2</version>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-					<include>**/*.html</include>
-				</includes>
-			</resource>
-		</resources>
 	</build>
 
 </project>

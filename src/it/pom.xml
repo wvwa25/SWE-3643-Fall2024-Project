@@ -13,6 +13,6 @@
 	<artifactId>calculatorAppIT</artifactId>
 	<version>1.0.0</version>
 	<name>calculatorAppIT</name>
-	<description>com.example.calculatorApp.Calculator App E2E Integration Tests with Playwright</description>
+	<description>com.example.calculatorApp.logic.Calculator App E2E Integration Tests with Playwright</description>
 
 </project>
