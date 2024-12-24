@@ -33,8 +33,6 @@ JUnit is used to run the unit/end-to-end tests and Microsoft Playwright is used 
 
 ## Architecture
 
------
-
 This calculator web application is based on an MVC (Model, View, Controller) design.
 The MapController class maps the main webpage, or "view," to the server.
 The user interacts with this view, which then passes HTTP requests to the OperationController class.
@@ -52,8 +50,6 @@ The organization of my project directory is based on the Maven [Standard Directo
 
 ## Environment
 
------
-
 This is a cross-platform application and should work in Windows 10+, Mac OSx Ventura+, and Linux environments.
 Note that the application has only been carefully tested in Windows 11.
 
@@ -62,8 +58,6 @@ To prepare your environment to execute this application:
 
 
 ## Executing the Web Application
-
------
 
 >  [!IMPORTANT]
 > Application execution requires a recent installation of Java.
@@ -89,8 +83,6 @@ Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 
 ## Executing Unit Tests
 
------
-
 >  [!IMPORTANT]
 > Unit Test execution will require cloning this GitHub repository.
 
@@ -100,8 +92,6 @@ Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 
 ## Reviewing Test Coverage
 
------
-
 Using JUnit test cases, 100% line and branch coverage was achieved for the logic module (package *calculatorApp.logic*).
 Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
 
@@ -109,8 +99,6 @@ Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
 
 
 ## Executing End-To-End Tests
-
------
 
 >  [!IMPORTANT]
 > End-to-end Test execution will require cloning this GitHub repository.
@@ -123,7 +111,5 @@ Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
 
 
 ## Final Video Presentation
-
------
 
 The presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
