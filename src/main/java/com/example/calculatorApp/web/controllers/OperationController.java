@@ -57,10 +57,10 @@ public class OperationController {
 
     private List<Double[]> parseDoubleArrayList(String[] inputLines) {
         // Parse String array as a list of Double arrays
-        List<Double[]> result = new ArrayList<Double[]>();
-        for (int i = 0; i < inputLines.length; i++) {
+        List<Double[]> result = new ArrayList<>();
+        for (String inputLine : inputLines) {
 
-            String[] splitLine = inputLines[i].split(",");
+            String[] splitLine = inputLine.split(",");
             Double[] doubles = new Double[splitLine.length];
             try {
                 for (int j = 0; j < splitLine.length; j++) {
@@ -68,7 +68,8 @@ public class OperationController {
                     doubles[j] = Double.parseDouble(splitLine[j]);
                 }
                 result.add(doubles);
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
         }
         return result;
     }

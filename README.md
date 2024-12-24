@@ -22,7 +22,7 @@ JUnit is used to run the unit/end-to-end tests and Microsoft Playwright is used 
 - [Environment](#environment)
 - [Executing the Web Application](#executing-the-web-application)
 - [Executing Unit Tests](#executing-unit-tests)
-- [Reviewing Unit Test Coverage](#reviewing-unit-test-coverage)
+- [Reviewing Test Coverage](#reviewing-test-coverage)
 - [Executing End-To-End Tests](#executing-end-to-end-tests)
 - [Final Video Presentation](#final-video-presentation)
 
