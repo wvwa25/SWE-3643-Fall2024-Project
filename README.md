@@ -29,11 +29,13 @@ JUnit is used to run the unit/end-to-end tests and Microsoft Playwright is used 
 - [Executing End-To-End Tests](#executing-end-to-end-tests)
 - [Final Video Presentation](#final-video-presentation)
 
+
 ## Team Members
 
 This project was completed by Vera Warren-Aliff, Kennesaw State University CS Major.
 - Vera's [GitHub](https://github.com/wvwa25)
 - Vera's [LinkedIn](https://www.linkedin.com/in/william-warren-aliff-10712b150/)
+
 
 ## Architecture
 
@@ -99,8 +101,6 @@ Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 
 ## Executing Unit Tests
 
------
-
 >  [!IMPORTANT]
 > Unit Test execution will require cloning this GitHub repository.
 
@@ -116,8 +116,6 @@ When executing unit tests, an output such as the one below should be seen.
 
 ## Reviewing Unit Test Coverage
 
------
-
 Using JUnit test cases, 100% line and branch coverage was achieved for the logic module (package *calculatorApp.logic*).
 A screenshot of the coverage report from IntelliJ coverage plugin is shown below.
 
@@ -125,8 +123,6 @@ A screenshot of the coverage report from IntelliJ coverage plugin is shown below
 
 
 ## Executing End-To-End Tests
-
------
 
 >  [!IMPORTANT]
 > End-to-end Test execution will require cloning this GitHub repository.
@@ -145,8 +141,6 @@ This will allow Playwright tests to be seen in real time as they execute.
 
 
 ## Final Video Presentation
-
------
 
 #### Last but not least, the video presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
 
