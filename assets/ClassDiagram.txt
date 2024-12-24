@@ -133,5 +133,6 @@ User -> Browser
 Browser -[hidden]-> calculatorApp
 test -[hidden]-> main
 Calculator -[hidden]-> resources
+User -[hidden]-> Application
 
 @enduml
