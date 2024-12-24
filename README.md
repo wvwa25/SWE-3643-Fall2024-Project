@@ -8,67 +8,76 @@ The primary objective of this project is to demonstrate thorough unit testing an
 The application was written in Java (version 21), using Maven as the build framework and Spring Boot as the execution framework.
 JUnit is used to run the unit/end-to-end tests and Microsoft Playwright is used to perform the end-to-end tests.
 
-#### Project Characteristics
+
+### Project Characteristics
 - Application performs seven different statistical functions and displays their output
 - Application will display a respective error message in the case of a calculation error
 - Full coverage is achieved for the logic module through unit testing
 - End-to-end testing of each calculator function for full path testing
 
+### Calculator Web App
+![Web Application UI](assets/WebAppUI.png)
 
 ## Table of Contents
 
 - [Team Members](#team-members)
 - [Architecture](#architecture)
-- [Environment](#environment)
 - [Executing the Web Application](#executing-the-web-application)
 - [Executing Unit Tests](#executing-unit-tests)
-- [Reviewing Test Coverage](#reviewing-test-coverage)
+- [Reviewing Unit Test Coverage](#reviewing-unit-test-coverage)
 - [Executing End-To-End Tests](#executing-end-to-end-tests)
 - [Final Video Presentation](#final-video-presentation)
 
 ## Team Members
 
-- Vera Warren-Aliff, CS Major
-
+This project was completed by Vera Warren-Aliff, Kennesaw State University CS Major.
+- Vera's [GitHub](https://github.com/wvwa25)
+- Vera's [LinkedIn](https://www.linkedin.com/in/william-warren-aliff-10712b150/)
 
 ## Architecture
 
------
+### Overview
 
 This calculator web application is based on an MVC (Model, View, Controller) design.
-The MapController class maps the main webpage, or "view," to the server.
-The user interacts with this view, which then passes HTTP requests to the OperationController class.
-OperationController passes these requests to the "model", or in this case, the calculator logic module.
-After a calculation is performed, OperationController passes the result back to the view.
 
-#### UML Class Diagram
+The MapController class maps the main webpage, or "view," to the server.
+The user interacts with this view, which then passes HTTP requests to the OperationController class, which acts as a REST API for a simplistic exchange of data.
+OperationController passes these requests to the "model", or in this case, the calculator logic module.
+The calculator logic module will return a Result element, which is then forwarded onto the HTML view by OperationController.
+
+### Demonstration of MVC Design Pattern
+
+![MVC Design Pattern](assets/MVCDesign.png)
+
+### UML Class Diagram
+
+A detailed UML class diagram was created for this project using PlantUML.
+The project structure and flow of data may be seen in this class diagram below.
+
 ![Class Diagram](assets/ClassDiagram.png)
 
-The organization of my project directory is based on the Maven [Standard Directory Layout]((https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)) guidelines given by Apache Maven Project.
+### Directory Structure
 
-#### Directory Structure
+The organization of my project directory is based on the Maven [Standard Directory Layout]((https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)) guidelines given by Apache Maven Project.
+The below screenshot from IntelliJ demonstrates the specifics of my project layout.
+
 ![Directory Structure](assets/Directory.png)
 
 
-## Environment
-
------
+## Executing the Web Application
 
 This is a cross-platform application and should work in Windows 10+, Mac OSx Ventura+, and Linux environments.
-Note that the application has only been carefully tested in Windows 11.
+However, this application has only been carefully tested in Windows 11, so a Windows virtual machine may be necessary for certain features.
 
 To prepare your environment to execute this application:
 1. [Install the latest Java runtime for your system.](https://www.java.com/en/download/manual.jsp)
-
-
-## Executing the Web Application
 
 -----
 
 >  [!IMPORTANT]
 > Application execution requires a recent installation of Java.
 
-#### Running JAR Executable
+### Running JAR Executable
 1. Clone this GitHub repository OR download [calculatorApp-1.0.jar](target/calculatorApp-1.0.jar) from the target folder
 2. Open a terminal at the directory with the calculatorApp-1.0.jar download
 3. Enter the following command into the terminal:
@@ -79,7 +88,7 @@ To prepare your environment to execute this application:
 
 Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 
-#### Running with Maven Wrapper
+### Running with Maven Wrapper
 1. Clone this GitHub repository
 2. Open a terminal in the project root directory
 3. Enter the following command into the terminal:
@@ -94,16 +103,22 @@ Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 >  [!IMPORTANT]
 > Unit Test execution will require cloning this GitHub repository.
 
-#### Executing JUnit Tests with Maven Wrapper
+### Executing JUnit Tests with Maven Wrapper
 1. After cloning the repo, open a command terminal in the project root directory
 2. Enter the following command into the terminal: `mvnw test`
 
-## Reviewing Test Coverage
+To better visualize the completion of unit tests, this [treeview extension](https://medium.com/wearewaes/my-journey-to-a-clear-test-output-in-maven-df82fe272249) was added to the Maven SureFire configuration.
+This extension outputs a tree diagram into the terminal to demonstrate the results of each individual unit test.
+When executing unit tests, an output such as the one below should be seen.
+
+![Unit Test Tree View Extension](assets/UnitTestTreeView.png)
+
+## Reviewing Unit Test Coverage
 
 -----
 
 Using JUnit test cases, 100% line and branch coverage was achieved for the logic module (package *calculatorApp.logic*).
-Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
+A screenshot of the coverage report from IntelliJ coverage plugin is shown below.
 
 ![Coverage](assets/Coverage.png)
 
@@ -115,7 +130,13 @@ Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
 >  [!IMPORTANT]
 > End-to-end Test execution will require cloning this GitHub repository.
 
-#### Executing Playwright End-to-end Tests with Maven Wrapper
+To demonstrate the functionality of Microsoft Playwright, I added a configuration to my CalculatorAppIT class to open Playwright in headed browser mode.
+This will allow Playwright tests to be seen in real time as they execute.
+
+### Playwright in Action
+![Playwright Execution](assets/Playwright.gif)
+
+### Executing Playwright End-to-end Tests with Maven Wrapper
 1. After cloning the repo, open a command terminal in the project root directory
 2. Enter the following command into the terminal: `mvnw verify -DskipSurefire=true`
 
@@ -126,4 +147,10 @@ Coverage analysis by the IntelliJ IDEA coverage plugin is shown below.
 
 -----
 
-The presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
+#### Last but not least, the video presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
+
+*Thank you for checking out my work and have a good one! :-D*
+
+*-Vera*
+
+![Playwright Execution](assets/ThankYou.gif)

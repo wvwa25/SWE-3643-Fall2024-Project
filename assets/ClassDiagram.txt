@@ -130,8 +130,8 @@ CalculatorTest --> Calculator
 Browser <--> OperationController : HTTP Call
 User -> Browser
 
-User -[hidden]-> resources
 Browser -[hidden]-> calculatorApp
 test -[hidden]-> main
+Calculator -[hidden]-> resources
 
 @enduml
