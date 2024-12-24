@@ -1,4 +1,4 @@
-package test;
+package com.example.test;
 
 import com.example.calculatorApp.logic.Calculator;
 import com.example.calculatorApp.logic.Result;
@@ -44,7 +44,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeSampleStD_EmptyList() {
+    void computeSampleStD_emptyList() {
         // preq-UNIT-TEST-2
 
         // Arrange
@@ -59,7 +59,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeSampleStD_NullList() {
+    void computeSampleStD_nullList() {
         // preq-UNIT-TEST-2
 
         // Arrange
@@ -67,6 +67,21 @@ public class CalculatorTest {
 
         // Act
         Result result = Calculator.computeSampleStD(null);
+
+        // Assert
+        Assertions.assertEquals(error, result.getError());
+    }
+
+    @Test
+    void computeSampleStD_ListWithOneSample() {
+        //preq-UNIT-TEST-3
+
+        // Arrange
+        List<Double> samples = List.of(5.0);
+        String error = "List of numbers must be at least 2.";
+
+        // Act
+        Result result = Calculator.computeSampleStD(samples);
 
         // Assert
         Assertions.assertEquals(error, result.getError());
@@ -104,7 +119,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computePopulationStD_EmptyList() {
+    void computePopulationStD_emptyList() {
         //preq-UNIT-TEST-3
 
         // Arrange
@@ -119,7 +134,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computePopulationStD_NullList() {
+    void computePopulationStD_nullList() {
         // preq-UNIT-TEST-3
 
         // Arrange
@@ -164,7 +179,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeMean_EmptyList() {
+    void computeMean_emptyList() {
         //preq-UNIT-TEST-4
 
         // Arrange
@@ -179,7 +194,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeMean_NullList() {
+    void computeMean_nullList() {
         //preq-UNIT-TEST-4
 
         // Arrange
@@ -212,7 +227,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeZScore_MissingParameters() {
+    void computeZScore_missingParameters() {
         // preq-UNIT-TEST-5
 
         // Arrange
@@ -229,7 +244,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeZScore_MeanZero() {
+    void computeZScore_meanZero() {
         // preq-UNIT-TEST-5
 
         // Arrange
@@ -247,7 +262,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeZScore_StdZero() {
+    void computeZScore_stdZero() {
         // preq-UNIT-TEST-5
 
         // Arrange
@@ -296,7 +311,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_EmptyList() {
+    void computeLinearReg_emptyList() {
         // preq-UNIT-TEST-6
 
         // Arrange
@@ -311,7 +326,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_NullList() {
+    void computeLinearReg_nullList() {
         // preq-UNIT-TEST-6
 
         // Arrange
@@ -325,13 +340,14 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_MissingParameters() {
+    void computeLinearReg_missingParameters() {
         // preq-UNIT-TEST-6
 
         // Arrange
         List<Double[]> pairs = Arrays.asList(
-                new Double[]{1.0, 2.0},
-                new Double[]{1.0}
+                new Double[]{1.5, 2.2},
+                new Double[]{1.5},
+                new Double[]{5.2, 3.8}
         );
         String error = "Each line must contain two values separated by commas.";
 
@@ -343,7 +359,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_AllXValuesSame() {
+    void computeLinearReg_allXValuesSame() {
         // preq-UNIT-TEST-6
 
         // Arrange
@@ -362,7 +378,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_AllYValuesSame() {
+    void computeLinearReg_allYValuesSame() {
         // preq-UNIT-TEST-6
 
         // Arrange
@@ -381,7 +397,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void computeLinearReg_AllPairsZero() {
+    void computeLinearReg_allPairsZero() {
         // preq-UNIT-TEST-6
 
         // Arrange
@@ -419,7 +435,7 @@ public class CalculatorTest {
     }
 
     @Test
-    void predictYValue_MissingParameters() {
+    void predictYValue_missingParameters() {
         // preq-UNIT-TEST-7
 
         // Arrange
@@ -433,6 +449,35 @@ public class CalculatorTest {
 
         // Act & Assert
         Assertions.assertEquals(error, result.getError());
+    }
+
+    @Test
+    public void resultClass_operationName() {
+        // Trivial test added to complete coverage of logic module
+
+        // Arrange
+        Result operation = new Result();
+        String operationName = "Name of Operation";
+
+        // Act
+        operation.setOperation(operationName);
+
+        // Assert
+        Assertions.assertEquals(operationName, operation.getOperation());
+    }
+
+    @Test
+    public void resultClass_success() {
+        // Trivial test added to complete coverage of logic module
+
+        // Arrange
+        Result operation = new Result();
+
+        // Act
+        operation.setIsSuccess(false);
+
+        // Assert
+        Assertions.assertFalse(operation.getIsSuccess());
     }
 
 }

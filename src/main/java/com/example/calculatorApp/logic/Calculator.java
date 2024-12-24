@@ -4,6 +4,17 @@ import java.util.List;
 
 
 public class Calculator {
+
+    // Ensures that list of numbers is not empty or null
+    // Ensures that list of numbers has at least one value
+    private static void validateDoubleListInput(List<Double> doubleList) {
+        if (doubleList == null || doubleList.isEmpty()) {
+            throw new IllegalArgumentException("List of numbers cannot be empty.");
+        } else if (doubleList.size() < 2) {
+            throw new IllegalArgumentException("List of numbers must be at least 2.");
+        }
+    }
+
     // preq-LOGIC-3
     public static Result computeSampleStD(List<Double> doubleList) {
 
@@ -12,10 +23,8 @@ public class Calculator {
         result.setOperation("Sample Standard Deviation");
 
         try {
-            // Check if the list is null or empty
-            if (doubleList == null || doubleList.isEmpty()) {
-                throw new IllegalArgumentException("List of numbers cannot be empty.");
-            }
+            // Check if the list is null, empty, or does not have at least two operands
+            validateDoubleListInput(doubleList);
 
             Result mean = computeMean(doubleList);
             double varianceSum = 0.0;
@@ -43,12 +52,8 @@ public class Calculator {
         result.setOperation("Population Standard Deviation");
 
         try {
-            // Check if the list is empty
-            if (doubleList == null || doubleList.isEmpty()) {
-                throw new IllegalArgumentException("List of numbers cannot be empty.");
-            } else if (doubleList.size() < 2) {
-                throw new IllegalArgumentException("List of numbers must be at least 2.");
-            }
+            // Check if the list is null, empty, or does not have at least two operands
+            validateDoubleListInput(doubleList);
 
             Result mean = computeMean(doubleList);
             double varianceSum = 0.0;
@@ -145,7 +150,7 @@ public class Calculator {
 
             // Check if each line has a pair of values in it
             for (Double[] pair : pairs) {
-                if (pair == null || pair.length != 2) {
+                if (pair.length != 2) {
                     throw new IllegalArgumentException("Each line must contain two values separated by commas.");
                 }
             }

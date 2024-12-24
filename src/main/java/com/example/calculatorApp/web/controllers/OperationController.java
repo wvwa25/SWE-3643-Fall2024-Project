@@ -21,11 +21,11 @@ public class OperationController {
         Map<String, Object> response = new HashMap<>();
 
         switch (operationType) {
-            case "sampleStdDev" -> calculation = computeSampleStd(input);
-            case "populationStdDev" -> calculation = computePopulationStd(input);
+            case "sampleStD" -> calculation = computeSampleStD(input);
+            case "populationStD" -> calculation = computePopulationStD(input);
             case "mean" -> calculation = computeMean(input);
             case "zScore" -> calculation = computeZScore(input);
-            case "linearRegression" -> calculation = computeLinearReg(input);
+            case "linearReg" -> calculation = computeLinearReg(input);
             case "predictY" -> calculation = predictYValue(input);
         }
 
@@ -61,13 +61,10 @@ public class OperationController {
         for (int i = 0; i < inputLines.length; i++) {
 
             String[] splitLine = inputLines[i].split(",");
-            for (int j = 0; i < splitLine.length; i++) {
-                splitLine[j] = splitLine[j].trim();
-            }
-
             Double[] doubles = new Double[splitLine.length];
             try {
                 for (int j = 0; j < splitLine.length; j++) {
+                    splitLine[j] = splitLine[j].trim();
                     doubles[j] = Double.parseDouble(splitLine[j]);
                 }
                 result.add(doubles);
@@ -76,7 +73,7 @@ public class OperationController {
         return result;
     }
 
-    private Result computeSampleStd(String input) {
+    private Result computeSampleStD(String input) {
         String[] inputLines = input.split("\\n");
         // Parse String array as list of Doubles
         List<Double> data = parseDoubleList(inputLines);
@@ -84,7 +81,7 @@ public class OperationController {
         return Calculator.computeSampleStD(data);
     }
 
-    private Result computePopulationStd(String input) {
+    private Result computePopulationStD(String input) {
         String[] inputLines = input.split("\\n");
         // Parse String array as list of Doubles
         List<Double> data = parseDoubleList(inputLines);

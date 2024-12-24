@@ -8,6 +8,7 @@
           href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           href="/css/index.css" th:href="@{/css/index.css}"/>
+    <link rel="icon" type="image/ico" th:href="@{/favicon.ico}">
 </head>
 
 <body>
@@ -17,17 +18,17 @@
     <div class="header">
         <h1>Calculator</h1>
         <div class="horizontal_spacer"></div>
-        <button class="button" type="button" onclick="clearInput()">Clear</button>
+        <button class="button" type="button" onclick="clearInput()" aria-label="clear">Clear</button>
     </div>
 
     <div class="output_box">
-        <p id="description" style="font-weight:bold">Enter values(s) below and select an operation.</p>
-        <p id="result"></p>
+        <p id="description" style="font-weight:bold" aria-label="description">Enter values(s) below and select an operation.</p>
+        <p id="result" class="optional-line" aria-label="result"></p>
     </div>
 
     <div class="input_box">
         <form id="operationForm" action="/performOperation" method="POST">
-            <p><label for="values" style="font-weight:bold">Values</label></p>
+            <p><label for="values" style="font-weight:bold" aria-label="values">Values</label></p>
             <textarea id="values" name="values" rows="4" cols="65"></textarea>
             <input type="hidden" id="operationType" name="operationType" value="">
             <br>
@@ -36,16 +37,16 @@
 
     <h2>Descriptive Statistics</h2>
     <div class="button_array1">
-        <button class="button" type="button" onclick="performOperation('sampleStdDev')">Compute Sample Standard Deviation | one value per line</button>
-        <button class="button" type="button" onclick="performOperation('populationStdDev')">Compute Population Standard Deviation | one value per line</button>
-        <button class="button" type="button" onclick="performOperation('mean')">Compute Mean | one value per line</button>
-        <button class="button" type="button" onclick="performOperation('zScore')">Compute Z Score | value, mean, stdDev on one line</button>
+        <button class="button" type="button" aria-label="sampleStD" onclick="performOperation('sampleStD')">Compute Sample Standard Deviation | one value per line</button>
+        <button class="button" type="button" aria-label="populationStD" onclick="performOperation('populationStD')">Compute Population Standard Deviation | one value per line</button>
+        <button class="button" type="button" aria-label="mean" onclick="performOperation('mean')">Compute Mean | one value per line</button>
+        <button class="button" type="button" aria-label="zScore" onclick="performOperation('zScore')">Compute Z Score | value, mean, stdDev on one line</button>
     </div>
 
     <h2>Single Linear Regression</h2>
     <div class="button_array2">
-        <button class="button" type="button" onclick="performOperation('linearRegression')">Compute Single Linear Regression Formula | one x,y pair per line</button>
-        <button class="button" type="button" onclick="performOperation('predictY')">Predict Y from Linear Regression Formula | x, m, b on one line</button>
+        <button class="button" type="button" aria-label="linearReg" onclick="performOperation('linearReg')">Compute Single Linear Regression Formula | one x,y pair per line</button>
+        <button class="button" type="button" aria-label="predictY" onclick="performOperation('predictY')">Predict Y from Linear Regression Formula | x, m, b on one line</button>
     </div>
 
 </div>
@@ -53,6 +54,10 @@
 </body>
 
 <script>
+    const resultElement = document.getElementById("result");
+    const descriptionElement = document.getElementById("description");
+    const outputBox = document.querySelector(".output_box");
+
     function performOperation(operation) {
         // Get input values and operation type
         const values = document.getElementById("values").value;
@@ -63,7 +68,7 @@
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ values: values, operationType: operation }),
+            body: JSON.stringify({values: values, operationType: operation}),
         })
             .then(response => {
                 if (!response.ok) {
@@ -72,14 +77,11 @@
                 return response.json(); // Parse the response as JSON
             })
             .then(data => {
-                const resultElement = document.getElementById("result");
-                const descriptionElement = document.getElementById("description");
-                const outputBox = document.querySelector(".output_box");
-
                 // Check the success flag and update the UI accordingly
                 if (data.success) {
                     // Success - show the result and operation in the description
                     descriptionElement.innerText = data.operation;
+                    resultElement.style.display = "block";
                     resultElement.innerText = data.result;
 
                     // Change appearance of the output box for success
@@ -89,25 +91,33 @@
                 } else {
                     // Failure - show the error message
                     descriptionElement.innerText = data.error;
-                    resultElement.innerText = "";
-
-                    // Change appearance of the output box for error
-                    outputBox.style.backgroundColor = "#B70F0A";
-                    outputBox.style.color = "#FFFFFF";
-                    outputBox.style.borderColor = "#B70F0A";
+                    resultElement.style.display = "none";
+                    errorFormat();
                 }
             })
             .catch(error => {
                 console.error("Error:", error);
-                const descriptionElement = document.getElementById("description");
                 descriptionElement.innerText = "An unexpected error occurred. Please try again.";
+                errorFormat();
             });
     }
-</script>
 
-<script>
+    function errorFormat() {
+        // Change appearance of the output box for error
+        outputBox.style.backgroundColor = "#B70F0A";
+        outputBox.style.color = "#FFFFFF";
+        outputBox.style.borderColor = "#B70F0A";
+    }
+
     function clearInput() {
         document.getElementById("operationForm").reset()
+        resultElement.style.display = "none";
+        descriptionElement.innerText = "Enter values(s) below and select an operation.";
+
+        // Change appearance of the output box to default
+        outputBox.style.backgroundColor = "#FFECD7";
+        outputBox.style.color = "#000000";
+        outputBox.style.borderColor = "#FFD67B";
     }
 </script>
 

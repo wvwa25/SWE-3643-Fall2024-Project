@@ -1,0 +1,9 @@
+To run FailSafe ITs without running SureFire Unit Tests:
+
+mvn clean verify -DskipSurefire=true
+
+
+
+To run Playwright CodeGen:
+
+.\mvnw exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen http://localhost:8080/"

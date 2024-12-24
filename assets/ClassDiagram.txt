@@ -1,0 +1,137 @@
+@startuml
+allowmixing
+
+package "main" #EBF2FC
+{
+    folder "resources" #F2E1CA {
+        folder "static" {
+            folder "css" {
+                file "index <css>"
+                file "bootstrap <css>"
+            }
+            file "favicon <ico>"
+        }
+        folder "templates" {
+            file "index <html>"
+        }
+    }
+}
+
+package "main.calculatorApp.logic" #A8FFA3
+{
+    class Calculator {
+        Calculator logic module
+        - validateDoubleListInput()
+        + computeSampleStD()
+        + computePopulationStD()
+        + computeMean()
+        + computeZScore()
+        + computeLinearReg()
+        + predictYValue()
+    }
+    class Result {
+        Calculation result object
+        --
+        - result
+        - isSuccess
+        - operation
+        - error
+        + getResult()
+        + setResult()
+        + getIsSuccess()
+        + setIsSuccess()
+        + getOperation()
+        + setOperation()
+        + getError()
+        + setError()
+    }
+}
+
+package "main.calculatorApp.web" #ADD8FF
+{
+    class Application {
+        + main()
+    }
+}
+
+package "main.calculatorApp.web.controllers" #BBADFF
+{
+    class MapController {
+        Maps index.html
+        --
+        + displayIndex()
+    }
+    class OperationRequest {
+        Operation request template for 
+        HTTP calls to Operation Controller
+        --
+        - values
+        - operationType
+        + getValues()
+        + getOperationType()
+    }
+    class OperationController {
+        Handles operation requests and
+        returns calculations from logic module
+        --
+        + performOperation()
+        - parseDoubleList()
+        - parseDoubleArrayList()
+        - computeSampleStD()
+        - computePopulationStD()
+        - computeMean()
+        - computeZScore()
+        - computeLinearReg()
+        - predictYValue()
+    }
+}
+
+package "test" #FFD5AD
+{
+  class CalculatorTest {
+    Unit tests for logic module using JUnit
+    --
+    + computeSampleStD_DoubleList()
+    + computeSampleStD_ListOfZeros()
+    + computeSampleStD_emptyList()
+    + ...()
+  }
+  class CalculatorAppIT {
+    Integration tests using
+    Playwright and JUnit
+    --
+    + playwright
+    + browser
+    + context
+    + page
+    + launchBrowser()
+    + closeBrowser()
+    + createContextAndPage()
+    + closeContext()
+    + pageTitle_isCalculator()
+    + ...()
+  }    
+}
+
+
+cloud #FFFEAC {
+  hide circle
+  class Browser
+}
+
+actor User
+
+Calculator -> Result : Instantiates
+OperationController -> OperationRequest : Instantiates
+OperationController --> Calculator
+CalculatorAppIT --> OperationController : HTTP Call via Headless Browser 
+CalculatorTest --> Calculator
+
+Browser <--> OperationController : HTTP Call
+User -> Browser
+
+User -[hidden]-> resources
+Browser -[hidden]-> calculatorApp
+test -[hidden]-> main
+
+@enduml
