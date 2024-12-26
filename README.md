@@ -41,12 +41,12 @@ This project was completed by Vera Warren-Aliff, Kennesaw State University CS Ma
 
 ### Overview
 
-This calculator web application is based on an MVC (Model, View, Controller) design.
+This calculator web application is based on an MVC (Model-View-Controller) design.
 
-The MapController class maps the main webpage, or "view," to the server.
-The user interacts with this view, which then passes HTTP requests to the OperationController class, which acts as a REST API for a simplistic exchange of data.
-OperationController passes these requests to the "model", or in this case, the calculator logic module.
-The calculator logic module will return a Result element, which is then forwarded onto the HTML view by OperationController.
+The `MapController` class maps the main webpage, or "view," to the server.
+The user interacts with this view, which then passes HTTP requests to the `OperationController` class, which acts as a REST API for a stateless exchange of data.
+This class passes these requests to the "model", or in this case, the *main.logic* module.
+`Calculator` methods are called in the form of a `Result` object, which is then forwarded to the view.
 
 ### Demonstration of MVC Design Pattern
 
@@ -54,10 +54,15 @@ The calculator logic module will return a Result element, which is then forwarde
 
 ### UML Class Diagram
 
-A detailed UML class diagram was created for this project using PlantUML.
-The project structure and flow of data may be seen in this class diagram below.
+A detailed UML class diagram was created for this project using PlantUML, as seen below.
+This diagram depicts application structure and data flow, from user input to backend logic.
 
 ![Class Diagram](assets/ClassDiagram.png)
+
+Design Notes:
+- `Calculator` logic was written using TDD (test-driven development) principles for cleanliness
+- Methods within `Calculator` return a `Result` object for object-oriented modularity
+- UI design is based on a [mockup](https://app.moqups.com/MvLts3wDDVQ8TNQBIdQN5nOCilbNhjYo/view/page/ac244bb80) provided by instructor
 
 ### Directory Structure
 
@@ -70,7 +75,7 @@ The below screenshot from IntelliJ demonstrates the specifics of my project layo
 ## Executing the Web Application
 
 This is a cross-platform application and should work in Windows 10+, Mac OSx Ventura+, and Linux environments.
-However, this application has only been carefully tested in Windows 11, so a Windows virtual machine may be necessary for certain features.
+Please note that this application has only been carefully tested in Windows, so a virtual machine may be necessary for running all subsequent execution contexts.
 
 To prepare your environment to execute this application:
 1. [Install the latest Java runtime for your system.](https://www.java.com/en/download/manual.jsp)
@@ -89,7 +94,7 @@ To prepare your environment to execute this application:
 
 -----
 
-Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
+Alternatively, you may run the project with the Maven Wrapper and Spring Boot.
 
 ### Running with Maven Wrapper
 1. Clone this GitHub repository
@@ -105,6 +110,9 @@ Alternatively, you may run the project with the Maven Wrapper and SpringBoot.
 > Unit Test execution will require cloning this GitHub repository.
 
 ### Executing JUnit Tests with Maven Wrapper
+
+Unit tests were configured using Maven Surefire to run in isolation when using the Maven `test` command.
+
 1. After cloning the repo, open a command terminal in the project root directory
 2. Enter the following command into the terminal: `mvnw test`
 
@@ -116,7 +124,7 @@ When executing unit tests, an output such as the one below should be seen.
 
 ## Reviewing Unit Test Coverage
 
-Using JUnit test cases, 100% line and branch coverage was achieved for the logic module (package *calculatorApp.logic*).
+Using comprehensive unit test cases, 100% line and branch coverage was achieved for the logic module (package *calculatorApp.logic*).
 A screenshot of the coverage report from IntelliJ coverage plugin is shown below.
 
 ![Coverage](assets/Coverage.png)
@@ -134,15 +142,19 @@ This will allow Playwright tests to be seen in real time as they execute.
 ![Playwright Execution](assets/Playwright.gif)
 
 ### Executing Playwright End-to-end Tests with Maven Wrapper
+
+End-to-end tests were configured using Maven Failsafe to run when using the Maven `verify` command.
+
 1. After cloning the repo, open a command terminal in the project root directory
 2. Enter the following command into the terminal: `mvnw verify -DskipSurefire=true`
 
-> The `-DskipSurefire=true` argument enables Maven FailSafe to run integration tests without running unit tests first.
+> The `-DskipSurefire=true` argument enables Failsafe to run E2E tests without running unit tests as well.
 
 
 ## Final Video Presentation
 
 #### Last but not least, the video presentation for this project may be viewed on [Vimeo](https://vimeo.com/1035858697).
+This presentation showcases the  architecture, functionality, and testing of this application.
 
 *Thank you for checking out my work and have a good one! :-D*
 
