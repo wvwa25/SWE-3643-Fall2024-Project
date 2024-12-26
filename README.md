@@ -62,7 +62,8 @@ This diagram depicts application structure and data flow, from user input to bac
 Design Notes:
 - `Calculator` logic was written using TDD (test-driven development) principles for cleanliness
 - Methods within `Calculator` return a `Result` object for object-oriented modularity
-- UI design is based on a [mockup](https://app.moqups.com/MvLts3wDDVQ8TNQBIdQN5nOCilbNhjYo/view/page/ac244bb80) provided by instructor
+- If an input or calculation error occurs, the specific type of error will be indicated in the `Result` object
+- UI design is based on a [mockup](https://app.moqups.com/MvLts3wDDVQ8TNQBIdQN5nOCilbNhjYo/view/page/ac244bb80) provided by the instructor
 
 ### Directory Structure
 
@@ -77,10 +78,7 @@ The below screenshot from IntelliJ demonstrates the specifics of my project layo
 This is a cross-platform application and should work in Windows 10+, Mac OSx Ventura+, and Linux environments.
 Please note that this application has only been carefully tested in Windows, so a virtual machine may be necessary for running all subsequent execution contexts.
 
-To prepare your environment to execute this application:
-1. [Install the latest Java runtime for your system.](https://www.java.com/en/download/manual.jsp)
-
------
+To prepare your environment to execute this application, [install the latest Java runtime for your system.](https://www.java.com/en/download/manual.jsp)
 
 >  [!IMPORTANT]
 > Application execution requires a recent installation of Java.
@@ -89,7 +87,8 @@ To prepare your environment to execute this application:
 1. Clone this GitHub repository OR download [calculatorApp-1.0.jar](target/calculatorApp-1.0.jar) from the target folder
 2. Open a terminal at the directory with the calculatorApp-1.0.jar download
 3. Enter the following command into the terminal:
-`java -jar calculatorApp-1.0.jar`
+
+       java -jar calculatorApp-1.0.jar
 4. Open a web browser and go to http://localhost:8080
 
 -----
@@ -100,8 +99,9 @@ Alternatively, you may run the project with the Maven Wrapper and Spring Boot.
 1. Clone this GitHub repository
 2. Open a terminal in the project root directory
 3. Enter the following command into the terminal:
-`mvnw spring-boot:run` 
-4. Open a web browser and go to http://localhost:8080
+   
+       mvnw spring-boot:run
+5. Open a web browser and go to http://localhost:8080
 
 
 ## Executing Unit Tests
@@ -114,11 +114,13 @@ Alternatively, you may run the project with the Maven Wrapper and Spring Boot.
 Unit tests were configured using Maven Surefire to run in isolation when using the Maven `test` command.
 
 1. After cloning the repo, open a command terminal in the project root directory
-2. Enter the following command into the terminal: `mvnw test`
+2. Enter the following command into the terminal:
 
-To better visualize the completion of unit tests, this [treeview extension](https://medium.com/wearewaes/my-journey-to-a-clear-test-output-in-maven-df82fe272249) was added to the Maven SureFire configuration.
-This extension outputs a tree diagram into the terminal to demonstrate the results of each individual unit test.
-When executing unit tests, an output such as the one below should be seen.
+         mvnw test
+
+> To better visualize the completion of unit tests, this [treeview extension](https://medium.com/wearewaes/my-journey-to-a-clear-test-output-in-maven-df82fe272249) was added to the Maven SureFire configuration.
+> This extension outputs a tree diagram into the terminal to demonstrate the results of each individual unit test.
+> When executing unit tests, an output such as the one below should be seen.
 
 ![Unit Test Tree View Extension](assets/UnitTestTreeView.png)
 
@@ -135,8 +137,8 @@ A screenshot of the coverage report from IntelliJ coverage plugin is shown below
 >  [!IMPORTANT]
 > End-to-end Test execution will require cloning this GitHub repository.
 
-To demonstrate the functionality of Microsoft Playwright, I added a configuration to my CalculatorAppIT class to open Playwright in headed browser mode.
-This will allow Playwright tests to be seen in real time as they execute.
+> To demonstrate the functionality of Microsoft Playwright, I added a configuration to my CalculatorAppIT class to open Playwright in headed browser mode.
+> This allows Playwright tests to be seen in real time as they execute.
 
 ### Playwright in Action
 ![Playwright Execution](assets/Playwright.gif)
@@ -146,7 +148,9 @@ This will allow Playwright tests to be seen in real time as they execute.
 End-to-end tests were configured using Maven Failsafe to run when using the Maven `verify` command.
 
 1. After cloning the repo, open a command terminal in the project root directory
-2. Enter the following command into the terminal: `mvnw verify -DskipSurefire=true`
+2. Enter the following command into the terminal:
+
+       mvnw verify -DskipSurefire=true
 
 > The `-DskipSurefire=true` argument enables Failsafe to run E2E tests without running unit tests as well.
 
