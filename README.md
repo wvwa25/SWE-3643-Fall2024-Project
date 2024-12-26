@@ -11,9 +11,9 @@ JUnit is used to run the unit/end-to-end tests and Microsoft Playwright is used 
 
 ### Project Characteristics
 - Application performs seven different statistical functions and displays their output
-- Application will display a respective error message in the case of a calculation error
+- Application displays a respective error message in the case of an input or calculation error
 - Full coverage is achieved for the logic module through unit testing
-- End-to-end testing of each calculator function for full path testing
+- End-to-end testing of each calculator function is performed
 
 ### Calculator Web App
 ![Web Application UI](assets/WebAppUI.png)
