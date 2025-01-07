@@ -75,25 +75,10 @@ The below screenshot from IntelliJ demonstrates the specifics of my project layo
 
 ## Executing the Web Application
 
-This is a cross-platform application and should work in Windows 10+, Mac OSx Ventura+, and Linux environments.
-Please note that this application has only been carefully tested in Windows, so a virtual machine may be necessary for running all subsequent execution contexts.
+> [!IMPORTANT]
+> This application has only been carefully tested in Windows, so a Windows virtual machine may be necessary for other operating systems.
 
-To prepare your environment to execute this application, [install the latest Java runtime for your system.](https://www.java.com/en/download/manual.jsp)
-
->  [!IMPORTANT]
-> Application execution requires a recent installation of Java.
-
-### Running JAR Executable
-1. Clone this GitHub repository OR download [calculatorApp-1.0.jar](target/calculatorApp-1.0.jar) from the target folder
-2. Open a terminal at the directory with the calculatorApp-1.0.jar download
-3. Enter the following command into the terminal:
-
-       java -jar calculatorApp-1.0.jar
-4. Open a web browser and go to http://localhost:8080
-
------
-
-Alternatively, you may run the project with the Maven Wrapper and Spring Boot.
+This project may be ran with the Maven Wrapper and Spring Boot.
 
 ### Running with Maven Wrapper
 1. Clone this GitHub repository
